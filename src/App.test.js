@@ -53,6 +53,7 @@ describe('on page load', () => {
 
     expect(navbar).toBe(true);
     expect(listItems.length).toBe(4);
+    await page.screenshot({path: 'screenshot.png'});
   });
 });
 
@@ -84,11 +85,12 @@ describe('login form', () => {
     const cookies = await page.cookies()
     const firstNameCookie = cookies.find(c => c.name === 'firstName' && c.value === user.firstName)
     expect(firstNameCookie).not.toBeUndefined()
-  })
-})
+  });
+});
 
 afterAll(() => {
   if (isDebugging()) {
     browser.close();
   }
 });
+
