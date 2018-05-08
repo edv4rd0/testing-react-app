@@ -80,11 +80,11 @@ describe('login form', () => {
     await page.waitForSelector('[data-testid="success"]');
   }, 16000000);
 
-//  test('sets firstName cookie', async () => {
-//    const cookies = await page.cookies()
-//    const firstNameCookie = cookies.find(c => c.name === 'firstName' && c.value === user.firstName)
-//    expect(firstNameCookie).not.toBeUndefined()
-//  })
+  test('sets firstName cookie', async () => {
+    const cookies = await page.cookies()
+    const firstNameCookie = cookies.find(c => c.name === 'firstName' && c.value === user.firstName)
+    expect(firstNameCookie).not.toBeUndefined()
+  })
 })
 
 afterAll(() => {
