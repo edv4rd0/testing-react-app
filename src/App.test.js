@@ -26,7 +26,7 @@ beforeAll(async () => {
   browser = await puppeteer.launch(isDebugging());
   page = await browser.newPage();
   await page.goto('http://localhost:3000/');
-  page.setViewport({ width: 500, height: 2400 });
+  page.emulate(iPhone);
 });
 
 describe('on page load', () => {
@@ -34,7 +34,7 @@ describe('on page load', () => {
     const html = await page.$eval('.App-title', e => e.innerHTML);
     expect(html).toBe('Welcome to React');
   },
-  16000
+  1600000
   );
 
   test('nav loads correctly', async () => {
@@ -53,7 +53,7 @@ describe('on page load', () => {
     const submitEl = await page.$('[data-testid="submit"]');
 
     await firstNameEl.tap();
-    await page.type('[data-testid="lastName"]', user.firstName);
+    await page.type('[data-testid="firstName"]', user.firstName);
 
     await lastNameEl.tap();
     await page.type('[data-testid="lastName"]', user.lastName);
@@ -66,7 +66,7 @@ describe('on page load', () => {
 
     await submitEl.tap();
     await page.waitForSelector('[data-testid="success"]');
-  }, 160000)
+  }, 1600000)
 });
 
 afterAll(() => {
